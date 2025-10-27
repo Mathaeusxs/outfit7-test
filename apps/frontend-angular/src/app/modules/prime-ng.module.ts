@@ -14,6 +14,7 @@ import { InputNumberModule } from "primeng/inputnumber";
 import { DynamicDialogModule } from "primeng/dynamicdialog";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { TextareaModule } from "primeng/textarea";
+import { MessageModule } from "primeng/message";
 
 const primengModules = [
   TableModule,
@@ -30,6 +31,7 @@ const primengModules = [
   InputNumberModule,
   TextareaModule,
   DynamicDialogModule,
+  MessageModule,
 
   /*  ThemeSwitcher,
     AvatarModule,
@@ -77,7 +79,7 @@ const primengModules = [
     MegaMenuModule,
     MenuModule,
     MenubarModule,
-    MessageModule,
+    ,
     MultiSelectModule,
     MeterGroupModule,
     OrganizationChartModule,

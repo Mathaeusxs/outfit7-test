@@ -1,4 +1,4 @@
-import { Component, input, Optional } from "@angular/core";
+import { Component, input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MainNgModule, PrimeNgGeneralModule } from "@app/modules";
 import { EventType, Event } from "@libs/types";
@@ -37,7 +37,7 @@ export class EventEditComponent {
   }
 
   onCancel() {
-    this.ref.close(null);
+    this.ref.close();
   }
 
   onSave() {

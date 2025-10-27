@@ -1,7 +1,7 @@
-<div [formGroup]="form" class="min-w-[300px] space-y-4">
-  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
-    <label for="name" class="pt-2 md:text-right">Name</label>
-    <div class="md:col-span-2">
+<div [formGroup]="form" class="space-y-4">
+  <div class="flex flex-col items-start gap-4 md:flex-row">
+    <label for="name" class="w-full pt-2 md:w-1/4 md:text-right">Name</label>
+    <div class="w-full md:w-3/4">
       <input
         id="name"
         type="text"
@@ -9,25 +9,46 @@
         formControlName="name"
         class="w-full"
       />
+      @if (form.get("name")?.invalid && form.get("name")?.touched) {
+        @if (form.get("name")?.errors?.["required"]) {
+          <p-message variant="simple" size="small" severity="error"
+            >Name is required</p-message
+          >
+        }
+      }
     </div>
   </div>
 
-  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
-    <label for="description" class="pt-2 md:text-right">Description</label>
-    <div class="md:col-span-2">
+  <div class="flex flex-col items-start gap-4 md:flex-row">
+    <label for="description" class="w-full pt-2 md:w-1/4 md:text-right"
+      >Description</label
+    >
+    <div class="w-full md:w-3/4">
       <textarea
         id="description"
         pInputTextarea
         formControlName="description"
         class="w-full"
         rows="4"
+        [class.ng-invalid]="
+          form.get('description')?.invalid && form.get('description')?.touched
+        "
       ></textarea>
+      @if (
+        form.get("description")?.invalid && form.get("description")?.touched
+      ) {
+        @if (form.get("description")?.errors?.["required"]) {
+          <p-message variant="simple" size="small" severity="error"
+            >Description is required</p-message
+          >
+        }
+      }
     </div>
   </div>
 
-  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
-    <label for="type" class="pt-2 md:text-right">Type</label>
-    <div class="md:col-span-2">
+  <div class="flex flex-col items-start gap-4 md:flex-row">
+    <label for="type" class="w-full pt-2 md:w-1/4 md:text-right">Type</label>
+    <div class="w-full md:w-3/4">
       <p-select
         id="type"
         formControlName="type"
@@ -36,12 +57,21 @@
         placeholder="Select Type"
         appendTo="body"
       ></p-select>
+      @if (form.get("type")?.invalid && form.get("type")?.touched) {
+        @if (form.get("type")?.errors?.["required"]) {
+          <p-message severity="error" variant="simple" size="small"
+            >Type is required</p-message
+          >
+        }
+      }
     </div>
   </div>
 
-  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
-    <label for="priority" class="pt-2 md:text-right">Priority</label>
-    <div class="md:col-span-2">
+  <div class="flex flex-col items-start gap-4 md:flex-row">
+    <label for="priority" class="w-full pt-2 md:w-1/4 md:text-right"
+      >Priority</label
+    >
+    <div class="w-full md:w-3/4">
       <p-select
         id="priority"
         formControlName="priority"
@@ -50,6 +80,13 @@
         placeholder="Select Priority"
         appendTo="body"
       ></p-select>
+      @if (form.get("priority")?.invalid && form.get("priority")?.touched) {
+        @if (form.get("priority")?.errors?.["required"]) {
+          <p-message severity="error" variant="simple" size="small"
+            >Priority is required</p-message
+          >
+        }
+      }
     </div>
   </div>
 </div>
