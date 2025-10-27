@@ -1,10 +1,12 @@
 import nx from '@nx/eslint-plugin';
 import baseConfig from '../../eslint.config.mjs';
+import overrides from '../../.eslintrc.overrides.json';
 
 export default [
   ...baseConfig,
   ...nx.configs['flat/angular'],
   ...nx.configs['flat/angular-template'],
+  ...(overrides || []),
   {
     files: ['**/*.ts'],
     rules: {
@@ -24,6 +26,11 @@ export default [
           style: 'kebab-case',
         },
       ],
+      '@angular-eslint/use-lifecycle-interface': ['error'],
+      '@angular-eslint/no-empty-lifecycle-method': ['warn'],
+      '@angular-eslint/prefer-inject': ['off'],
+      '@angular-eslint/prefer-standalone': ['off'],
+      '@angular-eslint/no-empty-lifecycle-method': ['off'],
     },
   },
   {

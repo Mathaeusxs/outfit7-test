@@ -3,14 +3,32 @@
   "compilerOptions": {
     "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "target": "es2022",
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "emitDecoratorMetadata": false,
-    "module": "preserve"
+    "module": "preserve",
+    "useDefineForClassFields": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@environment": ["apps/frontend-angular/src/environments/environment"],
+      "@app/modules": ["apps/frontend-angular/src/app/modules/index.ts"],
+      "@app/modules/*": ["apps/frontend-angular/src/app/modules/*"],
+      "@app/components/*": ["apps/frontend-angular/src/app/components/*"],
+      "@app/services/*": ["apps/frontend-angular/src/services/*"],
+      "@app/store/services": [
+        "apps/frontend-angular/src/app/store/services.ts"
+      ],
+      "@app/types": ["apps/frontend-angular/src/app/types/index.ts"],
+      "@libs/data-repo": ["libs/data-repo/src/index.ts"],
+      "@libs/types": ["libs/types/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

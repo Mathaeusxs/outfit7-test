@@ -8,7 +8,9 @@
     "emitDecoratorMetadata": true,
     "target": "es2021",
     "paths": {
-       "@lib/data-repo": ["libs/data-repo/src/index.ts"]
+      "@libs/data-repo": ["libs/data-repo/src/index.ts"],
+      "@libs/types": ["libs/types/src/index.ts"],
+      "@environments": ["apps/api/src/environments"]
     }
   },
   "include": ["src/**/*.ts"],

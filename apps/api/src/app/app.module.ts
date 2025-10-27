@@ -1,13 +1,9 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { EventsModule } from './endpoints/events/events.module';
-import { DbDetails } from '../environments/db-info';
-
-console.warn(DbDetails);
+import { EventsModule } from "./endpoints/events/events.module";
+import { DbDetails } from "../environments/db-info";
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(DbDetails),
-    EventsModule],
+  imports: [TypeOrmModule.forRoot(DbDetails), EventsModule],
 })
 export class AppModule {}

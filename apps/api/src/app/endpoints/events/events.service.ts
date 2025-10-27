@@ -1,4 +1,4 @@
-import { EventsRepository } from '@lib/data-repo';
+import { EventsRepository } from '@libs/data-repo';
 import { Injectable } from '@nestjs/common';
 import { CreateEventDto, UpdateEventDto } from './events.dto';
 
@@ -32,6 +32,4 @@ export class EventsService {
   async removeOne(id: number): Promise<void> {
     await this.eventsRepository.delete(id);
   }
-
-
 }

@@ -1,0 +1,99 @@
+<h2>Events</h2>
+
+<p-toolbar class="mb-6">
+  <ng-template #start>
+    <p-button
+      label="New"
+      icon="pi pi-plus"
+      class="mr-2"
+      (onClick)="openEdit()"
+    />
+  </ng-template>
+
+  <ng-template #end>
+    <p-iconfield>
+      <p-inputicon class="pi pi-search" />
+      <input
+        pInputText
+        type="text"
+        (input)="dt.filterGlobal($event.target.value, 'contains')"
+        placeholder="Search..."
+      />
+    </p-iconfield>
+  </ng-template>
+</p-toolbar>
+
+<p-table
+  #dt
+  [value]="(data$ | async) || []"
+  [rows]="10"
+  [columns]="cols"
+  [paginator]="true"
+  [globalFilterFields]="['id', 'name', 'description', 'type', 'priority']"
+  [tableStyle]="{ 'min-width': '75rem' }"
+  [rowHover]="true"
+  dataKey="id"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [showCurrentPageReport]="true"
+>
+  <ng-template #header>
+    <tr>
+      <th></th>
+      <th pSortableColumn="id">
+        <div class="flex items-center gap-2">
+          Id
+          <p-sortIcon field="id" />
+        </div>
+      </th>
+      <th pSortableColumn="name">
+        <div class="flex items-center gap-2">
+          Name
+          <p-sortIcon field="name" />
+        </div>
+      </th>
+      <th pSortableColumn="description">
+        <div class="flex items-center gap-2">
+          Description
+          <p-sortIcon field="description" />
+        </div>
+      </th>
+      <th pSortableColumn="type">
+        <div class="flex items-center gap-2">
+          Type
+          <p-sortIcon field="type" />
+        </div>
+      </th>
+      <th pSortableColumn="priority">
+        <div class="flex items-center gap-2">
+          Priority
+          <p-sortIcon field="priority" />
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-item>
+    <tr>
+      <td>
+        <p-button
+          icon="pi pi-pencil"
+          class="mr-2"
+          [rounded]="true"
+          [outlined]="true"
+          (click)="openEdit(item)"
+        />
+        <p-button
+          icon="pi pi-trash"
+          severity="danger"
+          [rounded]="true"
+          [outlined]="true"
+          (click)="deleteItem(item)"
+        />
+      </td>
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.type }}</td>
+      <td>{{ item.priority }}</td>
+    </tr>
+  </ng-template>
+</p-table>

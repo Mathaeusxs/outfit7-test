@@ -1,0 +1,21 @@
+<div class="flex min-h-screen flex-col">
+  <!-- Fixed Topbar -->
+  <app-topbar class="fixed top-0 right-0 left-0"></app-topbar>
+
+  <!-- Main Content -->
+  <div class="flex flex-1 pt-16">
+    <!-- Sidebar -->
+    <app-sidebar class="fixed top-16 bottom-0 left-0"></app-sidebar>
+
+    <!-- Main Content -->
+    <div class="ml-64 flex flex-1 flex-col transition-all duration-300">
+      <div class="flex-1 p-6">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+<p-toast position="bottom-right" />
+<p-confirmDialog />

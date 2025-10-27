@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lib/data-repo": ["libs/data-repo/src/index.ts"]
+      "@libs/data-repo": ["libs/data-repo/src/index.ts"],
+      "@libs/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

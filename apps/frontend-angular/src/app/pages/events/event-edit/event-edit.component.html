@@ -1,0 +1,74 @@
+<div [formGroup]="form" class="min-w-[300px] space-y-4">
+  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
+    <label for="name" class="pt-2 md:text-right">Name</label>
+    <div class="md:col-span-2">
+      <input
+        id="name"
+        type="text"
+        pInputText
+        formControlName="name"
+        class="w-full"
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
+    <label for="description" class="pt-2 md:text-right">Description</label>
+    <div class="md:col-span-2">
+      <textarea
+        id="description"
+        pInputTextarea
+        formControlName="description"
+        class="w-full"
+        rows="4"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
+    <label for="type" class="pt-2 md:text-right">Type</label>
+    <div class="md:col-span-2">
+      <p-select
+        id="type"
+        formControlName="type"
+        class="w-full"
+        [options]="typeOptions"
+        placeholder="Select Type"
+        appendTo="body"
+      ></p-select>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
+    <label for="priority" class="pt-2 md:text-right">Priority</label>
+    <div class="md:col-span-2">
+      <p-select
+        id="priority"
+        formControlName="priority"
+        class="w-full"
+        [options]="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+        placeholder="Select Priority"
+        appendTo="body"
+      ></p-select>
+    </div>
+  </div>
+</div>
+
+<div class="p-dialog-footer mt-5 !p-0">
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    icon="pi pi-times"
+    class="p-button-text"
+    (click)="onCancel()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Save"
+    icon="pi pi-check"
+    (click)="onSave()"
+    [disabled]="form.invalid"
+  ></button>
+</div>
