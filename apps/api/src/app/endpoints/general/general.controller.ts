@@ -10,7 +10,6 @@ export class GeneralController {
 
   @Get("ip-auth")
   async IPAuth(@Req() req: Request) {
-    console.warn(req.ip);
     return await this.generalService.IPAuth(req.ip);
   }
 }
