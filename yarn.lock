@@ -10810,11 +10810,6 @@ makeerror@1.0.12:
   dependencies:
     tmpl "1.0.5"
 
-marked-custom-heading-id@^2.0.15:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/marked-custom-heading-id/-/marked-custom-heading-id-2.0.15.tgz#abf640f81ecd9365516ad5eae8bb393404f05ac6"
-  integrity sha512-V/VAQkd240lwS/h5Noqm3bnMeK8lA97aG108zddZWttrPihMJ6iVp0w6ZJrbHuWWA0755GaQUIhq41i9UE6Z5A==
-
 marked@^16.0.0, marked@^16.2.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/marked/-/marked-16.4.1.tgz#db37c878cfa28fa57b8dd471fe92a83282911052"

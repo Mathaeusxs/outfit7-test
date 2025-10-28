@@ -10,6 +10,7 @@ RUN npx nx build frontend-angular
 FROM nginx:alpine AS runtime
 
 COPY --from=builder /project/dist/apps/frontend-angular/browser /usr/share/nginx/html
+COPY README.md /usr/share/nginx/html/README.md
 
 COPY docker/build/frontend-angular/nginx.conf /etc/nginx/conf.d/default.conf
 

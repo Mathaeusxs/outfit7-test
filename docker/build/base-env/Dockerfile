@@ -1,5 +1,5 @@
 # -------- Builder --------
-FROM node:20-alpine AS base-build-env
+FROM node:22-alpine AS base-build-env
 WORKDIR /project
 
 COPY package.json ./
