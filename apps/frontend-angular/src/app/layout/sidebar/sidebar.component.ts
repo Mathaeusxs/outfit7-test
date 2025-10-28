@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input, model } from "@angular/core";
 import { MenuItem } from "primeng/api";
 
 @Component({
@@ -8,13 +8,15 @@ import { MenuItem } from "primeng/api";
   styleUrl: "./sidebar.component.scss",
 })
 export class SidebarComponent {
+  open = model(false);
+
   menuItems: MenuItem[] = [
     {
       label: "Home",
       items: [
         {
-          label: "Dashboard",
-          icon: "pi pi-fw pi-home",
+          label: "Events",
+          icon: "pi pi-fw pi-calendar",
           routerLink: ["/events"],
         },
       ],

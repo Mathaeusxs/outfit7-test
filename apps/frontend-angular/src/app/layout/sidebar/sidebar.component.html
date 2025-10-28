@@ -1,4 +1,9 @@
-<div class="h-full w-64 overflow-y-auto bg-gray-900 text-white">
+@let open = this.open();
+
+<div
+  class="fixed top-16 left-0 z-40 h-full w-64 flex-shrink-0 -translate-x-full transform overflow-y-auto bg-gray-900 text-white transition-transform duration-300 lg:static lg:top-auto lg:h-full lg:translate-x-0"
+  [class.translate-x-0]="open"
+>
   <nav class="p-4">
     <ul class="space-y-1">
       @for (group of menuItems; track $index) {
@@ -23,3 +28,10 @@
     </ul>
   </nav>
 </div>
+
+@if (open) {
+  <div
+    class="fixed inset-0 z-30 bg-black/40 lg:hidden"
+    (click)="this.open.set(false)"
+  ></div>
+}

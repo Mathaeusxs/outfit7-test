@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  # Base build environment - must be built first
+  base-build-env:
+    build:
+      context: ../../
+      dockerfile: docker/build/base-env/Dockerfile
+    image: base-build-env:${VERSION:-latest}
+
+  # API
+  api:
+    build:
+      context: ../../
+      dockerfile: docker/build/api/Dockerfile
+    image: events7-api:${VERSION:-latest}
+    depends_on:
+      - base-build-env
+
+  # Frontend Angular
+  frontend-angular:
+    build:
+      context: ../../
+      dockerfile: docker/build/frontend-angular/Dockerfile
+    image: events7-frontend-angular:${VERSION:-latest}
+    depends_on:
+      - base-build-env

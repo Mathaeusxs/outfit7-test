@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   standalone: false,
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
+  selector: "app-layout",
+  templateUrl: "./layout.component.html",
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  sidebarOpen = false;
+
+  onToggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+}

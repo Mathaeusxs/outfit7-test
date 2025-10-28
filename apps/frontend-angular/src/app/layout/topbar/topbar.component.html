@@ -1,7 +1,12 @@
 <header class="flex h-16 items-center justify-between bg-white px-6 shadow-md">
   <!-- Left Side -->
   <div class="flex items-center gap-4">
-    <p-button icon="pi pi-bars" class="p-button-text lg:hidden"></p-button>
+    <p-button
+      icon="pi pi-bars"
+      class="p-button-text lg:hidden"
+      (click)="onMenuClick()"
+      aria-label="Toggle menu"
+    ></p-button>
     <a href="/" class="flex items-center gap-2">
       <span class="text-primary-600 text-2xl font-bold">Events7</span>
     </a>

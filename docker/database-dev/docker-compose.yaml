@@ -1,7 +1,6 @@
-version: '3'
+version: "3.9"
 
 services:
-
   mariaDb:
     container_name: mariaDb
     image: mariadb
@@ -11,8 +10,8 @@ services:
     networks:
       - default
     ports:
-      - 3306:3306
-    # restart: unless-stopped
+      - 5050:5050
+    restart: unless-stopped
 
 networks:
   default:

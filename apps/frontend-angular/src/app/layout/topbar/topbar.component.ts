@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
   standalone: false,
-  selector: 'app-topbar',
-  templateUrl: './topbar.component.html',
-  styleUrl: './topbar.component.scss',
+  selector: "app-topbar",
+  templateUrl: "./topbar.component.html",
+  styleUrl: "./topbar.component.scss",
 })
-export class TopbarComponent {}
+export class TopbarComponent {
+  @Output() menuToggle = new EventEmitter<void>();
+
+  onMenuClick() {
+    this.menuToggle.emit();
+  }
+}
