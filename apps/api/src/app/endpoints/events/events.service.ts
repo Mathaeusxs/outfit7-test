@@ -1,15 +1,10 @@
-import { EventsRepository } from '@libs/data-repo';
-import { Injectable } from '@nestjs/common';
-import { CreateEventDto, UpdateEventDto } from './events.dto';
+import { EventsRepository } from "@libs/data-repo";
+import { Injectable } from "@nestjs/common";
+import { CreateEventDto, UpdateEventDto } from "./events.dto";
 
 @Injectable()
 export class EventsService {
-
   constructor(private readonly eventsRepository: EventsRepository) {}
-
-  getData(): { message: string } {
-    return { message: 'Hello API' };
-  }
 
   async findAll() {
     return this.eventsRepository.find();

@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EventEditComponent } from './event-edit.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { EventEditComponent } from "./event-edit.component";
 
-describe('EventEditComponent', () => {
+describe("EventEditComponent", () => {
   let component: EventEditComponent;
   let fixture: ComponentFixture<EventEditComponent>;
 
@@ -15,7 +15,7 @@ describe('EventEditComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

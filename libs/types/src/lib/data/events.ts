@@ -1,9 +1,8 @@
-
 export enum EventType {
-  Crosspromo = 'crosspromo',
-  Liveops = 'liveops',
-  App = 'app',
-  Ads = 'ads',
+  Crosspromo = "crosspromo",
+  Liveops = "liveops",
+  App = "app",
+  Ads = "ads",
 }
 
 export interface Event {

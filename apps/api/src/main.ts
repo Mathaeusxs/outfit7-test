@@ -6,22 +6,25 @@
 import { Logger, ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import { NestExpressApplication } from "@nestjs/platform-express";
 import { AppModule } from "./app/app.module";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const globalPrefix = "api";
   app.setGlobalPrefix(globalPrefix);
+
+  app.set("trust proxy", true);
   const port = process.env.PORT || 3000;
 
   app.useGlobalPipes(
     new ValidationPipe({
-      transform: true, // Converts types automatically (e.g. "5" -> 5)
+      transform: true, // Converts types automatically
       whitelist: true, // Strips out properties not in DTOs
-      forbidNonWhitelisted: true, // Throws error if extra fields are sent
-      forbidUnknownValues: true, // Rejects completely unknown objects
+      forbidNonWhitelisted: true,
+      forbidUnknownValues: true,
       transformOptions: {
-        enableImplicitConversion: true, // allows type conversion
+        enableImplicitConversion: true,
       },
     }),
   );

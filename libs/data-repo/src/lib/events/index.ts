@@ -1,2 +1,2 @@
-export * from './events.module';
-export * from './events.repository';
+export * from "./events.module";
+export * from "./events.repository";

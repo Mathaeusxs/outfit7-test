@@ -10,7 +10,7 @@
     "paths": {
       "@libs/data-repo": ["libs/data-repo/src/index.ts"],
       "@libs/types": ["libs/types/src/index.ts"],
-      "@environments": ["apps/api/src/environments"]
+      "@environment": ["apps/api/src/environments/environment.ts"]
     }
   },
   "include": ["src/**/*.ts"],

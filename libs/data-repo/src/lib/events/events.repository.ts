@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { DataSource, Repository } from 'typeorm';
-import { EventsEntity } from './events.entity';
+import { Injectable } from "@nestjs/common";
+import { DataSource, Repository } from "typeorm";
+import { EventsEntity } from "./events.entity";
 
 @Injectable()
 export class EventsRepository extends Repository<EventsEntity> {

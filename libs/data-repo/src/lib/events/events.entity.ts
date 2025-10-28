@@ -1,5 +1,5 @@
-import { Event, EventType } from '@libs/types';
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Event, EventType } from "@libs/types";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity("events")
 export class EventsEntity implements Event {
@@ -13,7 +13,7 @@ export class EventsEntity implements Event {
   description: string;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: EventType,
   })
   type: EventType;
