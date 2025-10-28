@@ -246,6 +246,8 @@ Once all services are running:
 
 ### Assumptions and Explanations
 
+Event (ID) its auto created by database and as primary key (unique).
+
 For role system application checks based on client ip for "roles". Application offers changes of fake role preview.
 Mind that application was made with testing and trying new implementations in mind. Therefore it could be improved with additional refinements, better error handling, code organization, and performance optimizations.
 
