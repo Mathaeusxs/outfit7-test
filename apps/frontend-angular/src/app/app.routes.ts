@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
 import { LayoutComponent } from "./layout/layout.component";
+import { IpAuthGuard } from "./guards/ip-auth.guard";
 
 export const appRoutes: Route[] = [
   {
@@ -11,6 +12,7 @@ export const appRoutes: Route[] = [
   {
     path: "",
     component: LayoutComponent,
+    canActivate: [IpAuthGuard],
     children: [
       {
         path: "events",

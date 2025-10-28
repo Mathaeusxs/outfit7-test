@@ -1,7 +1,8 @@
-import { Component, input } from "@angular/core";
+import { Component, effect, input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MainNgModule, PrimeNgGeneralModule } from "@app/modules";
-import { EventType, Event } from "@libs/types";
+import { MainService } from "@app/services";
+import { EventTypes, Event } from "@libs/types";
 import { DynamicDialogRef } from "primeng/dynamicdialog";
 
 @Component({
@@ -16,24 +17,37 @@ export class EventEditComponent {
 
   form: FormGroup;
 
-  typeOptions = Object.values(EventType);
+  typeOptions: { label: string; value: EventTypes; disabled?: boolean }[] = [];
 
   constructor(
+    private mainService: MainService,
     private formBuilder: FormBuilder,
     public ref: DynamicDialogRef,
-  ) {}
+  ) {
+    effect(() =>
+      this.setTypeOptions(this.mainService.country()?.enableAds ?? false),
+    );
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
-      type: [EventType.App, Validators.required],
+      type: [EventTypes.App, Validators.required],
       priority: [5, Validators.required],
     });
 
     if (this.editMode() && this.data()) {
       this.form.patchValue({ ...this.data() });
     }
+  }
+
+  private setTypeOptions(adsEnabled: boolean) {
+    this.typeOptions = [];
+    Object.values(EventTypes).forEach((type) => {
+      const disabled = type === EventTypes.Ads && !adsEnabled;
+      this.typeOptions.push({ label: type, value: type, disabled });
+    });
   }
 
   onCancel() {

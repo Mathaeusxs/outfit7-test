@@ -1,4 +1,4 @@
-export enum EventType {
+export enum EventTypes {
   Crosspromo = "crosspromo",
   Liveops = "liveops",
   App = "app",
@@ -9,6 +9,6 @@ export interface Event {
   id: number;
   name: string;
   description: string;
-  type: EventType;
+  type: EventTypes;
   priority: number;
 }

@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { EventsService } from "./events.service";
 import { EventsRepository } from "@libs/data-repo";
 import { CreateEventDto, UpdateEventDto } from "./events.dto";
-import { Event, EventType } from "@libs/types";
+import { Event, EventTypes } from "@libs/types";
 
 describe("EventsService", () => {
   let service: EventsService;
@@ -34,7 +34,7 @@ describe("EventsService", () => {
         id: 1,
         name: "Test",
         description: "",
-        type: EventType.App,
+        type: EventTypes.App,
         priority: 1,
       },
     ];
@@ -50,7 +50,7 @@ describe("EventsService", () => {
       id: 1,
       name: "Test",
       description: "",
-      type: EventType.App,
+      type: EventTypes.App,
       priority: 1,
     };
     repository.findOneBy.mockResolvedValue(event);
@@ -64,7 +64,7 @@ describe("EventsService", () => {
     const dto: CreateEventDto = {
       name: "Test",
       description: "",
-      type: EventType.App,
+      type: EventTypes.App,
       priority: 1,
     } as any;
     const createdEvent: Event = { id: 1, ...dto };
@@ -84,7 +84,7 @@ describe("EventsService", () => {
       id: 1,
       name: "Updated",
       description: "",
-      type: EventType.App,
+      type: EventTypes.App,
       priority: 1,
     };
 

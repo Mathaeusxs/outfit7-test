@@ -1,12 +1,4 @@
-export interface IPAuthResponse {
+export interface CountryInfo {
   countryCode: string;
   enableAds: boolean;
-}
-
-export enum CountryCode {
-  SI = "SI",
-  US = "US",
-  GB = "GB",
-  FR = "FR",
-  DE = "DE",
 }

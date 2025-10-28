@@ -14,14 +14,12 @@
 
   <!-- Right Side -->
   <div class="flex items-center gap-4">
-    <div
-      class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-gray-100"
-    >
-      <i class="pi pi-globe text-gray-600"></i>
-      <span class="hidden text-sm font-medium text-gray-700 md:block"
-        >Country</span
-      >
-      <!-- <i class="pi pi-chevron-down text-xs text-gray-600"></i> -->
-    </div>
+    <p-splitbutton
+      icon="pi pi-globe"
+      [label]="mainService.country()?.countryCode"
+      [model]="items"
+      severity="secondary"
+      text
+    />
   </div>
 </header>

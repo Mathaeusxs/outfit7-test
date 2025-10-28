@@ -1,4 +1,4 @@
-import { Event, EventType } from "@libs/types";
+import { Event, EventTypes } from "@libs/types";
 import { ApiProperty, ApiPropertyOptional, PartialType } from "@nestjs/swagger";
 import { IsIn, IsNumber, IsString, Max, Min } from "class-validator";
 
@@ -13,11 +13,11 @@ export class CreateEventDto implements Partial<Event> {
 
   @ApiProperty({
     description: "Event type",
-    enum: EventType,
-    example: EventType.Crosspromo,
+    enum: EventTypes,
+    example: EventTypes.Crosspromo,
   })
-  @IsIn(Object.values(EventType))
-  type: EventType;
+  @IsIn(Object.values(EventTypes))
+  type: EventTypes;
 
   @ApiProperty({
     description: "Priority between 1 and 10",

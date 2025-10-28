@@ -1,4 +1,4 @@
-import { Event, EventType } from "@libs/types";
+import { Event, EventTypes } from "@libs/types";
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity("events")
@@ -14,9 +14,9 @@ export class EventsEntity implements Event {
 
   @Column({
     type: "enum",
-    enum: EventType,
+    enum: EventTypes,
   })
-  type: EventType;
+  type: EventTypes;
 
   @Column()
   priority: number;

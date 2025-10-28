@@ -21,7 +21,8 @@
       "@app/modules": ["apps/frontend-angular/src/app/modules/index.ts"],
       "@app/modules/*": ["apps/frontend-angular/src/app/modules/*"],
       "@app/components/*": ["apps/frontend-angular/src/app/components/*"],
-      "@app/services/*": ["apps/frontend-angular/src/services/*"],
+      "@app/services": ["apps/frontend-angular/src/app/services/index.ts"],
+      "@app/services/*": ["apps/frontend-angular/src/app/services/*"],
       "@app/store/services": [
         "apps/frontend-angular/src/app/store/services.ts"
       ],

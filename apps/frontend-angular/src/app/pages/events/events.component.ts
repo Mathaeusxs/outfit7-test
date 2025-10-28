@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { Event } from "@libs/types";
+import { Event, EventTypes } from "@libs/types";
 import { pColumn } from "@app/types";
 import { EventsStoreService } from "@app/store/services";
 import { firstValueFrom } from "rxjs";
 import { DialogService } from "primeng/dynamicdialog";
 import { EventEditComponent } from "./event-edit/event-edit.component";
+import { MainService } from "../../services/main.service";
 
 @Component({
   selector: "app-events",
@@ -21,16 +22,15 @@ export class EventsComponent implements OnInit {
   editData: Event;
   editMode = false;
 
+  EventTypes = EventTypes;
+
   constructor(
+    public mainService: MainService,
     private eventsStoreService: EventsStoreService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
   ) {}
-
-  exportCSV() {
-    /*   this.dt.exportCSV(); */
-  }
 
   ngOnInit() {
     this.cols = [

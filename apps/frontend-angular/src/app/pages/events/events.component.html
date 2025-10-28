@@ -1,3 +1,5 @@
+@let country = this.mainService.country();
+
 <h2>Events</h2>
 
 <p-toolbar class="mb-6">
@@ -80,6 +82,7 @@
           [rounded]="true"
           [outlined]="true"
           (click)="openEdit(item)"
+          [disabled]="!country?.enableAds && item.type === EventTypes.Ads"
         />
         <p-button
           icon="pi pi-trash"
@@ -87,6 +90,7 @@
           [rounded]="true"
           [outlined]="true"
           (click)="deleteItem(item)"
+          [disabled]="!country?.enableAds && item.type === EventTypes.Ads"
         />
       </td>
       <td>{{ item.id }}</td>
