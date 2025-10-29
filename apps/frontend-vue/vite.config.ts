@@ -34,6 +34,7 @@ export default defineConfig(() => ({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    chunkSizeWarningLimit: 1000,
   },
   test: {
     name: "frontend-vue",

@@ -1,1 +1,1 @@
-/home/matej/projects/outfit7-test/README.md
+../../../README.md

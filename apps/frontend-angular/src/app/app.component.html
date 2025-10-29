@@ -1,1 +1,8 @@
+@if (!mainService.country()) {
+  <div class="mt-8 flex flex-col items-center">
+    <img src="/assets/favicon.ico" alt="App Favicon" class="mb-4 h-12 w-12" />
+    <span class="text-lg text-gray-600">Loading...</span>
+  </div>
+}
+
 <router-outlet></router-outlet>

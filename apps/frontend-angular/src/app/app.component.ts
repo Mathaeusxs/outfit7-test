@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { MainService } from "./services";
 
 @Component({
   standalone: false,
@@ -6,4 +7,6 @@ import { Component } from "@angular/core";
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(public mainService: MainService) {}
+}
