@@ -34,7 +34,7 @@ provide("forceSetCountry", forceSetCountry);
     <!-- Main Content -->
     <div class="mt-16 flex flex-1">
       <!-- Sidebar -->
-      <Sidebar v-model:open="sidebarOpen" class="z-10" />
+      <Sidebar v-model:open="sidebarOpen" />
 
       <!-- Main Content -->
       <div class="ml-0 flex flex-1 flex-col transition-all duration-300">

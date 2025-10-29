@@ -1,6 +1,6 @@
 # Events7 Application
 
-A full-stack event management application built with Angular, NestJS, and MariaDB in an Nx monorepo. This application was created as a technical assessment and served as a playground for testing new implementations, architectural patterns, and full-stack development principles.
+A full-stack event management application built with Angular (with an experimental Vue 3 client), NestJS, and MariaDB in an Nx monorepo. This application was created as a technical assessment and served as a playground for testing new implementations, architectural patterns, and full-stack development principles.
 
 **Note:** As with any experimental project, bugs are not just possible—they're practically guaranteed. Consider them "features in disguise" waiting to be discovered! 🐛
 
@@ -16,7 +16,7 @@ A full-stack event management application built with Angular, NestJS, and MariaD
 
 ### Technology Stack
 
-- **Frontend**: Angular with PrimeNG UI components
+- **Frontend**: Angular with PrimeNG UI components, plus an experimental Vue 3 app using PrimeVue
 - **Backend**: NestJS with Express
 - **Database**: MariaDB with TypeORM
 - **State Management**: NgRx (Store, Effects, Entity)
@@ -31,7 +31,8 @@ The project is organized as an Nx monorepo with the following structure:
 ```
 apps/
   ├── api/                   # NestJS backend API
-  └── frontend-angular/      # Angular frontend application
+   ├── frontend-angular/      # Angular frontend application
+   └── frontend-vue/          # Experimental Vue 3 frontend application (shares the same API)
 
 libs/
   ├── data-repo/             # Shared data repository (TypeORM entities)
@@ -47,7 +48,7 @@ docker/
 
 - Event CRUD operations
 - RESTful API with Swagger documentation
-- Responsive UI with PrimeNG components
+- Responsive UI with PrimeNG/PrimeVue components
 - Type-safe data models shared between frontend and backend
 - Docker-based deployment
 
@@ -84,11 +85,15 @@ docker/
 
    The API will be available at `http://localhost:3000`
 
-4. **Start the Frontend application:**
+4. **Start a Frontend application (choose one):**
+
    ```bash
+   # Angular
    npx nx serve frontend-angular
+
+   # Vue (experimental)
+   npx nx serve frontend-vue
    ```
-   The frontend will be available at `http://localhost:4200`
 
 ### Development Commands
 
@@ -96,14 +101,17 @@ docker/
 # Run tests
 npx nx test api
 npx nx test frontend-angular
+npx nx test frontend-vue
 
 # Lint code
 npx nx lint api
 npx nx lint frontend-angular
+npx nx lint frontend-vue
 
 # Build test for production
 npx nx build api
 npx nx build frontend-angular
+npx nx build frontend-vue
 
 ```
 
@@ -114,7 +122,7 @@ The build process uses Docker with multi-stage builds for optimized production i
 ### Build Architecture
 
 1. **Base Build Environment** - Contains all dependencies and build tools
-2. **Application Builds** - API and Frontend built from the base image
+2. **Application Builds** - API and Frontends built from the base image
 3. **Runtime Images** - Minimal production images with only runtime dependencies
 
 ### Building with Docker Compose
@@ -131,6 +139,7 @@ This will build:
 - `base-build-env:latest` - Base image with Nx and all dependencies
 - `events7-api:latest` - NestJS API server
 - `events7-frontend-angular:latest` - Angular application served by Nginx
+- `events7-frontend-vue:latest` - Experimental Vue application served by Nginx
 
 #### Build with Version Tags
 
@@ -142,6 +151,7 @@ This creates versioned images:
 
 - `events7-api:1.0.0`
 - `events7-frontend-angular:1.0.0`
+- `events7-frontend-vue:1.0.0`
 
 #### Build Specific Service
 
@@ -149,8 +159,11 @@ This creates versioned images:
 # Build only the API
 docker-compose build api
 
-# Build only the frontend
+# Build only the Angular frontend
 docker-compose build frontend-angular
+
+# Build only the Vue frontend
+docker-compose build frontend-vue
 ```
 
 ### Using Environment Variables
@@ -189,6 +202,8 @@ cd docker/runtime
 docker-compose up -d
 ```
 
+**Note:** For production deployments, copy the `docker/runtime` directory to your target server or deployment environment. The compose file and configuration can be customized via the `.env` file without modifying the compose file itself.
+
 ### Services
 
 The runtime configuration includes:
@@ -204,12 +219,17 @@ The runtime configuration includes:
    - Connects to database automatically
    - Waits for database health check
 
-3. **Frontend (Angular + Nginx)**
+3. **Frontend Angular (Nginx)**
    - Container: `events7-frontend-angular`
    - Port: `5000`
    - Depends on API availability
 
-### Runtime Configuration
+4. **Frontend Vue (experimental, Nginx)**
+   - Container: `events7-frontend-vue`
+   - Port: `5500`
+   - Depends on API availability
+
+### Runtime Configuration - Optional
 
 Create a `.env` file in `docker/runtime/` to customize:
 
@@ -219,7 +239,8 @@ VERSION=1.0.0
 
 # Service ports
 API_PORT=3000
-FRONTEND_PORT=5000
+FRONTEND_ANGULAR_PORT=5000
+FRONTEND_VUE_PORT=5500
 DATABASE_PORT=5050
 
 # Database configuration
@@ -235,7 +256,8 @@ NODE_ENV=production
 
 Once all services are running:
 
-- **Frontend**: http://localhost (or configured `FRONTEND_PORT`)
+- **Frontend (Angular)**: http://localhost:5000 (or configured `FRONTEND_PORT`)
+- **Frontend (Vue, experimental)**: http://localhost:5500 (default)
 - **API**: http://localhost:3000 (or configured `API_PORT`)
 - **API Documentation (Swagger)**: http://localhost:3000/api
 - **Database**: localhost:5050 (for direct connections)

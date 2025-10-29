@@ -9,7 +9,7 @@ export default defineConfig(() => ({
   cacheDir: "../../node_modules/.vite/apps/frontend-vue",
   publicDir: "public",
   server: {
-    port: 4200,
+    port: 4100,
     host: "localhost",
     proxy: {
       "/api": {
@@ -41,6 +41,7 @@ export default defineConfig(() => ({
     watch: false,
     globals: true,
     environment: "jsdom",
+    setupFiles: ["src/test-setup.ts"],
     include: ["{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     reporters: ["default"],
     coverage: {
