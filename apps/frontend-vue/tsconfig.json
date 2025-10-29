@@ -6,8 +6,12 @@
     "strict": true,
     "jsx": "preserve",
     "jsxImportSource": "vue",
-    "moduleResolution": "node",
-    "resolveJsonModule": true
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "paths": {
+      "@libs/data-repo": ["libs/data-repo/src/index.ts"],
+      "@libs/types": ["libs/types/src/index.ts"]
+    }
   },
   "files": [],
   "include": [],
