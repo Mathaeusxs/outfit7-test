@@ -1,11 +1,13 @@
-import { Injectable, inject } from "@angular/core";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   CanActivate,
   RouterStateSnapshot,
 } from "@angular/router";
 import { Observable, of } from "rxjs";
-import { catchError, map, switchMap, take } from "rxjs/operators";
+import { catchError, map, take } from "rxjs/operators";
 
 import { MainService } from "../services/main.service";
 import { GeneralApiService } from "../services/api/general-api.service";

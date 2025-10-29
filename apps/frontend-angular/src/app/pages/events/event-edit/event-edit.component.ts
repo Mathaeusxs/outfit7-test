@@ -1,4 +1,4 @@
-import { Component, effect, input } from "@angular/core";
+import { Component, effect, input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MainNgModule, PrimeNgGeneralModule } from "@app/modules";
 import { MainService } from "@app/services";
@@ -11,7 +11,7 @@ import { DynamicDialogRef } from "primeng/dynamicdialog";
   templateUrl: "./event-edit.component.html",
   styleUrl: "./event-edit.component.scss",
 })
-export class EventEditComponent {
+export class EventEditComponent implements OnInit {
   editMode = input(false);
   data = input<Event>();
 

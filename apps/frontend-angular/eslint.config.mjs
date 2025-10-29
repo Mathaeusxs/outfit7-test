@@ -1,12 +1,12 @@
 import nx from "@nx/eslint-plugin";
 import baseConfig from "../../eslint.config.mjs";
-import overrides from "../../.eslintrc.overrides.json";
+import overrides from "../../.eslintrc.overrides.json" with { type: "json" };
 
 export default [
   ...baseConfig,
   ...nx.configs["flat/angular"],
   ...nx.configs["flat/angular-template"],
-  ...(overrides || []),
+  overrides,
   {
     files: ["**/*.ts"],
     rules: {
@@ -30,12 +30,22 @@ export default [
       "@angular-eslint/no-empty-lifecycle-method": ["warn"],
       "@angular-eslint/prefer-inject": ["off"],
       "@angular-eslint/prefer-standalone": ["off"],
-      "@angular-eslint/no-empty-lifecycle-method": ["off"],
+      "jsx-a11y/click-events-have-key-events": ["off"],
     },
   },
   {
     files: ["**/*.html"],
-    // Override or add rules here
-    rules: {},
+    rules: {
+      "@angular-eslint/template/click-events-have-key-events": ["off"],
+      "@angular-eslint/template/interactive-supports-focus": ["off"],
+      "@angular-eslint/template/elements-content": ["off"],
+    },
+  },
+  {
+    files: ["**/*.spec.ts"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": ["off"],
+      "@typescript-eslint/no-unused-vars": ["off"],
+    },
   },
 ];
