@@ -46,7 +46,19 @@ services:
     container_name: events7-frontend-angular
     image: events7-frontend-angular:${VERSION:-latest}
     ports:
-      - "${FRONTEND_PORT:-5000}:80"
+      - "${FRONTEND_ANGULAR_PORT:-5000}:80"
+    depends_on:
+      - api
+    networks:
+      - events7-network
+    restart: unless-stopped
+
+  # Frontend Vue
+  frontend-vue:
+    container_name: events7-frontend-vue
+    image: events7-frontend-vue:${VERSION:-latest}
+    ports:
+      - "${FRONTEND_VUE_PORT:-5500}:80"
     depends_on:
       - api
     networks:

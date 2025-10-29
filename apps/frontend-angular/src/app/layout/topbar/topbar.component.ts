@@ -12,18 +12,18 @@ export class TopbarComponent {
 
   items: MenuItem[] = [
     {
-      label: "Fake SI",
+      label: "Fake SI (ads disabled)",
       command: () =>
         this.mainService.country.set({
-          countryCode: "Fake SI",
+          countryCode: "SI",
           enableAds: false,
         }),
     },
     {
-      label: "Fake US",
+      label: "Fake US (ads enabled)",
       command: () =>
         this.mainService.country.set({
-          countryCode: "Fake US",
+          countryCode: "US",
           enableAds: true,
         }),
     },

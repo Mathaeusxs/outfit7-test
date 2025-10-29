@@ -25,3 +25,12 @@ services:
     image: events7-frontend-angular:${VERSION:-latest}
     depends_on:
       - base-build-env
+
+  # Frontend Vue
+  frontend-vue:
+    build:
+      context: ../../
+      dockerfile: docker/build/frontend-vue/Dockerfile
+    image: events7-frontend-vue:${VERSION:-latest}
+    depends_on:
+      - base-build-env

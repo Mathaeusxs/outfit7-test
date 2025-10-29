@@ -13,21 +13,6 @@ describe("LayoutComponent", () => {
   let fixture: ComponentFixture<LayoutComponent>;
 
   beforeEach(async () => {
-    // Mock window.matchMedia for PrimeNG components
-    Object.defineProperty(window, "matchMedia", {
-      writable: true,
-      value: jest.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    });
-
     await TestBed.configureTestingModule({
       imports: [RouterModule.forRoot([]), PrimeNgGeneralModule],
       declarations: [

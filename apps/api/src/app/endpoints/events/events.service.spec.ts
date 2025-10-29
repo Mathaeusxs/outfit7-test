@@ -79,7 +79,7 @@ describe("EventsService", () => {
   });
 
   it("should update an event", async () => {
-    const updateDto: UpdateEventDto = { name: "Updated" } as Partial<Event>;
+    const updateDto: UpdateEventDto = { name: "Updated" } as UpdateEventDto;
     const updatedEvent: Event = {
       id: 1,
       name: "Updated",

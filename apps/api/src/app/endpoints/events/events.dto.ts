@@ -1,6 +1,13 @@
 import { Event, EventTypes } from "@libs/types";
 import { ApiProperty, ApiPropertyOptional, PartialType } from "@nestjs/swagger";
-import { IsIn, IsNumber, IsString, Max, Min } from "class-validator";
+import {
+  IsIn,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from "class-validator";
 
 export class CreateEventDto implements Partial<Event> {
   @ApiProperty({ description: "Event name", example: "Action button" })
@@ -34,5 +41,6 @@ export class CreateEventDto implements Partial<Event> {
 export class UpdateEventDto extends PartialType(CreateEventDto) {
   @ApiPropertyOptional({ description: "Event ID", example: "1" })
   @IsNumber()
-  id?: number;
+  @IsOptional()
+  id: number;
 }
