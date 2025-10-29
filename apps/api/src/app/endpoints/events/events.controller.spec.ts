@@ -4,6 +4,7 @@ import request from "supertest";
 import { EventsController } from "./events.controller";
 import { EventsService } from "./events.service";
 import { CreateEventDto, UpdateEventDto } from "./events.dto";
+import { EventTypes } from "@libs/types";
 
 describe("EventsController (integration)", () => {
   let app: INestApplication;
@@ -50,7 +51,12 @@ describe("EventsController (integration)", () => {
   });
 
   it("/POST events", async () => {
-    const dto: CreateEventDto = { name: "New Event" } as any;
+    const dto: CreateEventDto = {
+      name: "New Event",
+      description: "Event Description",
+      type: EventTypes.App,
+      priority: 1,
+    };
 
     const response = await request(app.getHttpServer())
       .post("/events")
@@ -62,7 +68,7 @@ describe("EventsController (integration)", () => {
   });
 
   it("/PATCH events/:id", async () => {
-    const dto: UpdateEventDto = { name: "Updated Event" } as any;
+    const dto: Partial<UpdateEventDto> = { name: "Updated Event" };
 
     const response = await request(app.getHttpServer())
       .patch("/events/1")
