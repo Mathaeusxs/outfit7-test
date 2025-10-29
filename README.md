@@ -31,8 +31,8 @@ The project is organized as an Nx monorepo with the following structure:
 ```
 apps/
   ├── api/                   # NestJS backend API
-   ├── frontend-angular/      # Angular frontend application
-   └── frontend-vue/          # Experimental Vue 3 frontend application (shares the same API)
+  ├── frontend-angular/      # Angular frontend application
+  └── frontend-vue/          # Experimental Vue 3 frontend application (shares the same API)
 
 libs/
   ├── data-repo/             # Shared data repository (TypeORM entities)
