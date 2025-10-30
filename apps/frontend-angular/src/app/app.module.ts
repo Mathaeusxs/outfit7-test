@@ -18,6 +18,7 @@ import { EventsStoreModule } from "./store/events/events.module";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { ErrorInterceptor } from "./guards/error.interceptor";
+import { ProgressBarModule } from "primeng/progressbar";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,7 @@ import { ErrorInterceptor } from "./guards/error.interceptor";
     CommonModule,
     AppRoutingModule,
     AppLayoutModule,
-
+    ProgressBarModule,
     StoreModule.forRoot(
       {},
       {
